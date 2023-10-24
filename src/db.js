@@ -32,8 +32,20 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Nombres, de, modelos } = sequelize.models;
-// Aca vendrian las relaciones
+const { user, contactForm, faq, seat, event, ticket } = sequelize.models;
+
+user.hasMany(contactForm, { foreignKey: "userId" }); //  Usuario tiene muchos FormContacto
+user.hasMany(faq, { foreignKey: "userId" }); //  Usuario tiene muchas ResenaCalificacion
+user.hasMany(Carrito, { foreignKey: "userId" }); //  Usuario tiene muchos Carrito
+user.belongsToMany(event, { through: "userEvent" }); //  Usuario pertenece a muchos Evento
+event.belongsToMany(event, { through: "eventUser" });
+event.hasMany(faq, { foreignKey: "eventId" }); //  Evento tiene muchas ResenaCalificacion
+event.hasMany(seat, { foreignKey: "eventId" }); // Evento tiene muchas Butaca
+
+user.hasMany(seat, { foreignKey: "userId" }); // Usuario tiene muchas Butaca
+user.hasMany(ticket, { foreignKey: "userId" }); // Usuario tiene muchas Boleta
+ticket.hasMany(Butaca, { foreignKey: "ticketId" }); // Boleta tiene muchas Butaca
+event.hasMany(ticket, { foreignKey: "eventId" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

@@ -1,3 +1,0 @@
-//Lucía
-
-export Evento bue 
