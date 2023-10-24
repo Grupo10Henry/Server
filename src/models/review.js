@@ -9,6 +9,22 @@ module.exports = (sequelize, DataTypes) => {
           defaultValue: DataTypes.UUIDV4, 
           allowNull: false,
       },
+      userID: { 
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'User', 
+            key: 'userID' 
+        }
+    },
+    eventID: { 
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: 'Event', 
+            key: 'eventID' 
+        }
+    },
       review: { 
           type: DataTypes.TEXT,
           allowNull: true,

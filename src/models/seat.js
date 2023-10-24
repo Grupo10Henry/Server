@@ -9,6 +9,22 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: DataTypes.UUIDV4, 
             allowNull: false,
         },
+        eventID: { 
+            type: DataTypes.UUID,
+            allowNull: false,
+            references: {
+                model: 'Event', 
+                key: 'eventID' 
+            }
+        },
+        userID: { 
+            type: DataTypes.UUID,
+            allowNull: false,
+            references: {
+                model: 'User', 
+                key: 'userID' 
+            }
+        },
         name: { 
             type: DataTypes.STRING,
             allowNull: false,
@@ -17,14 +33,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             defaultValue: true,
         },
-        eventID: { 
-            type: DataTypes.UUID,
-            allowNull: false,
-            references: {
-                model: 'Event', 
-                key: 'eventID' 
-            }
-        }
+      
 
     });
 }

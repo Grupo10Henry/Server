@@ -45,6 +45,10 @@ module.exports = (sequelize, DataTypes) => {
         paymentNum: { // 'numPago' 
             type:DataTypes.STRING,
             allowNull: false,
+        },
+        isDonation: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false
         }
     });
 }
