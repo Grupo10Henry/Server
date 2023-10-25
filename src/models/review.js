@@ -1,43 +1,50 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  sequelize.define('Review', { 
+  sequelize.define("Review", {
 
-      reviewID: { 
-          type: DataTypes.UUID,
-          primaryKey: true,
-          defaultValue: DataTypes.UUIDV4, 
-          allowNull: false,
-      },
-      userID: { 
-        type: DataTypes.UUID,
-        allowNull: false,
-        references: {
-            model: 'User', 
-            key: 'userID' 
-        }
+    reviewID: {
+      type: DataTypes.UUID,
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
     },
-    eventID: { 
-        type: DataTypes.UUID,
-        allowNull: false,
-        references: {
-            model: 'Event', 
-            key: 'eventID' 
-        }
+    userID: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: "userID",
+      },
     },
-      review: { 
-          type: DataTypes.TEXT,
-          allowNull: true,
+    eventID: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "Event",
+        key: "eventID",
       },
-      rating: { 
-          type: DataTypes.INTEGER,
-          allowNull: false,
-      },
-      reviewDate: { 
-          type: DataTypes.DATE,
-          defaultValue: DataTypes.NOW,
-          allowNull: false,
+    },
+    paystubID: { 
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+          model: 'Paystub', 
+          key: 'paystubID' 
       }
-
+  },
+    review: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    reviewDate: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
+      allowNull: false,
+    },
   });
-}
+};

@@ -1,9 +1,9 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    sequelize.define('Ticket', { // 'Boleta' traducido a 'Ticket'
+    sequelize.define('Paystub', {   
 
-        ticketID: { 
+        paystubID: { 
             type: DataTypes.UUID,
             primaryKey: true,
             defaultValue: DataTypes.UUIDV4, 
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         issueDate: { // 'fechaEmision' 
             type: DataTypes.DATE,
-            defaultValue: DataTypes.NOW,
+            defaultValue: DataTypes.NOW, // --> se carga la fecha en el momento en que se genera la "boleta de pago"
             allowNull: false,
         },
         rate: { // 'tarifa'
@@ -52,3 +52,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 }
+
+
+
+
+
+
