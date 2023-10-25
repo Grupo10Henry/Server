@@ -49,14 +49,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.FLOAT,
             allowNull:false,
         },
-        rate: { // 'tarifa'
-            type: DataTypes.FLOAT,
-            allowNull: false,
-        },  
-        taxes: { // 'impuestos' 
-            type: DataTypes.FLOAT,
-            allowNull: false,
-        },
         status: { 
             type: DataTypes.BOOLEAN,
             defaultValue: true
