@@ -30,17 +30,9 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: DataTypes.NOW, // --> se carga la fecha en el momento en que se genera la "boleta de pago"
             allowNull: false,
         },
-        rate: { // 'tarifa'
-            type: DataTypes.FLOAT,
-            allowNull: false,
-        },
         tickets: { 
             type: DataTypes.FLOAT,
             allowNull:false,
-        },
-        taxes: { // 'impuestos' 
-            type: DataTypes.FLOAT,
-            allowNull: false,
         },
         paymentNum: { // 'numPago' 
             type:DataTypes.STRING,
