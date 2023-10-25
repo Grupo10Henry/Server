@@ -17,7 +17,11 @@ module.exports = (sequelize, DataTypes) => {
                 key: 'userID' 
             }
         },
-        title: { 
+        name: { 
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        lastName: { 
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -27,11 +31,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         phone: { 
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false
         },
-        inquiry: { 
+        consultation: { 
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: false
         }
 
     });
