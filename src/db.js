@@ -32,26 +32,21 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { User, ContactForm, FrequentlyAskedQuestions, Seat, Event, Ticket } =
-  sequelize.models;
+const { User, ContactForm, Review, Seat, Event, Paystub } = sequelize.models;
 //relacion de Users
-User.hasMany(ContactForm, { foreignKey: "userId", as: "user_contactForms" }); //  Usuario tiene muchos FormContacto
-User.hasMany(FrequentlyAskedQuestions, {
-  foreignKey: "userId",
-  as: "user_faq",
-}); //  Usuario tiene muchas ResenaCalificacion
-User.hasMany(Seat, { foreignKey: "userId", as: "user_seat" }); // Usuario tiene muchas Butaca
-User.hasMany(Ticket, { foreignKey: "userId", as: "user_ticket" }); // Usuario tiene muchas Boleta
+User.hasMany(ContactForm, { foreignKey: "userID", as: "user_contactForms" }); //  Usuario tiene muchos FormContacto
+User.hasMany(Review, { foreignKey: "userID", as: "user_review" }); //  Usuario tiene muchas reviews
+User.hasMany(Seat, { foreignKey: "userID", as: "user_seat" }); // Usuario tiene muchas Butaca
+User.hasMany(Paystub, { foreignKey: "userID", as: "user_paystub" }); // Usuario tiene muchas Boleta
 // Relacion de Events
-Event.hasMany(FrequentlyAskedQuestions, {
-  foreignKey: "eventId",
-  as: "event_faq",
-}); //  Evento tiene muchas ResenaCalificacion
-Event.hasMany(Seat, { foreignKey: "eventId", as: "event_seat" }); // Evento tiene muchas Butaca
-Event.hasMany(Ticket, { foreignKey: "eventId", as: "event_ticket" });
-//Relación Ticket
-Ticket.hasMany(Seat, { foreignKey: "ticketId", as: "ticket_seat" }); // Boleta tiene muchas Butaca
-
+Event.hasMany(Review, { foreignKey: "eventID", as: "event_review" }); //  Evento tiene muchas reviews
+Event.hasMany(Seat, { foreignKey: "eventID", as: "event_seat" }); // Evento tiene muchas Butaca
+Event.hasMany(Paystub, { foreignKey: "eventID", as: "event_paystub" });
+//Relación Paystub
+Paystub.hasMany(Seat, { foreignKey: "paystubID", as: "paystub_seat" }); // Boleta tiene muchas Butaca
+//Relación one to one review y paystub
+Paystub.hasOne(Review);
+Review.belongsTo(Paystub);
 //Relacion de N-N User-Event
 User.belongsToMany(Event, { through: "userEvent" }); //  Usuario pertenece a muchos Evento
 Event.belongsToMany(Event, { through: "userEvent" });
