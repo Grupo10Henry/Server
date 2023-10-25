@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false, 
         },
         identityCard: {
-            tpye: DataTypes.INTEGER,
+            tpye: DataTypes.STRING,
             allowNull: false,
         },
         dob: {
