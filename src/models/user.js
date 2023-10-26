@@ -9,6 +9,11 @@ module.exports = (sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
+      isAdmin: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
