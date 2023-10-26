@@ -7,7 +7,7 @@ const fs = require("fs");
 const path = require("path");
 
 const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${"Nombre base de datos"}`,
+  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${"tubutaca"}`,
   { logging: false, native: false }
 );
 const basename = path.basename(__filename);
@@ -49,7 +49,7 @@ Paystub.hasOne(Review);
 Review.belongsTo(Paystub);
 //Relacion de N-N User-Event
 User.belongsToMany(Event, { through: "userEvent" }); //  Usuario pertenece a muchos Evento
-Event.belongsToMany(Event, { through: "userEvent" });
+Event.belongsToMany(User, { through: "userEvent" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
