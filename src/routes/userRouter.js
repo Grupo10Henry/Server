@@ -1,9 +1,9 @@
 const { Router } = require("express");
+const { getUserHandler } = require("../handlers/user/getUserHandler");
 
 const userRouter = Router();
 
-userRouter.get("/");
-userRouter.get("/:id"); //Por las dudas
+userRouter.get("/", getUserHandler);
 userRouter.delete("/:id");
 userRouter.put("/:id");
 userRouter.post("/");
