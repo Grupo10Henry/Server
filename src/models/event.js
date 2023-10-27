@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-
+// asdas
 module.exports = (sequelize) => {
   sequelize.define(
     "Event",
