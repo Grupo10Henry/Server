@@ -7,9 +7,11 @@ const getEventController = async (search, category, date, price) => {
   let whereClause = {};
 
   if (search) {
-    const find = Event.findAll({ where: { name: search } });
-    if (find.length > 0) whereClause.name = search;
-    else whereClause.locationName = search;
+    const find = Event.findAll({
+      where: { name: { [Op.like]: `%${search}%` } },
+    });
+    if (find.length > 0) whereClause.name = { [Op.like]: `%${search}%` };
+    else whereClause.locationName = { [Op.like]: `%${search}%` };
   }
   if (category) {
     whereClause.category = category;

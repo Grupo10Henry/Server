@@ -6,7 +6,7 @@ const {
   getAllEventController,
 } = require("../../controllers/event/getAllEventController");
 const getEventHandler = async (req, res) => {
-  const { search, category, date, price } = req.body;
+  const { search, category, date, price } = req.query;
   try {
     if (search || category || date || price) {
       const event = await getEventController(search, category, date, price);

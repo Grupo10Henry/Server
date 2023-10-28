@@ -1,3 +1,4 @@
+//Eve
 const { Event } = require("../../db");
 const getAllEventController = () => {
   const allEvents = Event.findAll();
