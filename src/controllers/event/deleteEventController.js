@@ -4,11 +4,11 @@ const deleteEventController = async (eventId) => {
   const event = await Event.findByPk(eventId);
 
   if (!event) {
-    throw new Error("Usuario no encontrado");
+    throw new Error("Evento no encontrado");
   }
   event.destroy({
     where: {
-      eventID: eventId, // ID del usuario que deseas eliminar lógicamente
+      eventID: eventId, // ID del evento que deseas eliminar lógicamente
     },
   });
   return event;
