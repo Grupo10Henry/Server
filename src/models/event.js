@@ -62,6 +62,14 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allownull: false,
       },
+      priceMin: {
+        type: DataTypes.INTGER,
+        allowNull: false,
+      },
+      priceMax: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      }
     },
     {
       paranoid: true,
