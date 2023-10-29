@@ -63,13 +63,13 @@ module.exports = (sequelize) => {
         allownull: false,
       },
       priceMin: {
-        type: DataTypes.INTGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       priceMax: {
         type: DataTypes.INTEGER,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     },
     {
       paranoid: true,

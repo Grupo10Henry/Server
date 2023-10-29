@@ -1,47 +1,34 @@
 // //Eve
-// const { Event } = require("../../db");
 
-// const getEventController = async (
-//   name,
-//   description,
-//   category,
-//   capacity,
-//   date,
-//   time,
-//   locationName,
-//   adressLocation,
-//   mapLocation,
-//   image,
-//   bannerImage,
-//   planImage,
-//   views
-// ) => {
-//   const filteredDB = await Event.findAll({
-//     where: {
-//       name: name,
-//     },
-//   });
+const { Op } = require("sequelize");
+const { Event } = require("../../db");
 
-//   if (filteredDB.length === 0) {
-//     const newEvent = await Event.create({
-//       name,
-//       description,
-//       category,
-//       capacity,
-//       date,
-//       time,
-//       locationName,
-//       adressLocation,
-//       mapLocation,
-//       image,
-//       bannerImage,
-//       planImage,
-//       views,
-//     });
-//     return newEvent;
-//   } else
-//     throw new Error(
-//       "Ya existe un evento creado con ese nombre, por favor ingrese un nombre diferente"
-//     );
-// };
-// module.exports = { getEventController };
+const getEventController = async (search, category, date, price) => {
+  let whereClause = {};
+
+  if (search) {
+    const find = Event.findAll({
+      where: { name: { [Op.like]: `%${search}%` } },
+    });
+    if (find.length > 0) whereClause.name = { [Op.like]: `%${search}%` };
+    else whereClause.locationName = { [Op.like]: `%${search}%` };
+  }
+  if (category) {
+    whereClause.category = category;
+  }
+  if (date) {
+    whereClause.date = date;
+  }
+  if (price) {
+    whereClause.priceMax = { [Op.lte]: price };
+  }
+  const filteredDB = await Event.findAll({ where: whereClause });
+
+  if (filteredDB.length > 0) {
+    return filteredDB;
+  } else {
+    throw new Error("No existen eventos que coincidan con la búsqueda");
+  }
+};
+
+module.exports = { getEventController };
