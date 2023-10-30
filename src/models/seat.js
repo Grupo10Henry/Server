@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       },
       userID: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: "User",
           key: "userID",
@@ -30,17 +30,21 @@ module.exports = (sequelize) => {
       },
       paystubID: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: "Paystub",
           key: "paystubID",
         },
       },
-      row: {
+      rows: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      column: {
+      columns: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      seatLocation : {
         type: DataTypes.STRING,
         allowNull: false,
       },

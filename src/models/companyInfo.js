@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       adress: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: true,
       },
       businessHours: {
