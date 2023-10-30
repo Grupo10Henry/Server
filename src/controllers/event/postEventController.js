@@ -16,7 +16,9 @@ const postEventController = async (
   planImage,
   views,
   priceMin,
-  priceMax
+  priceMax,
+  isDonation,
+  type
 ) => {
   const filteredDB = await Event.findAll({
     where: {
@@ -41,6 +43,8 @@ const postEventController = async (
       views,
       priceMin,
       priceMax,
+      isDonation,
+      type,
     });
     return newEvent;
   } else
