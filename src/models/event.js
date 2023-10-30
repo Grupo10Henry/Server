@@ -72,12 +72,12 @@ module.exports = (sequelize) => {
       },
       isDonation: {
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
       },
       type: {
         type: DataTypes.STRING,
-        allowNull: false
-      }
+        allowNull: false,
+      },
     },
     {
       paranoid: true,

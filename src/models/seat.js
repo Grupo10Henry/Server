@@ -44,7 +44,7 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      seatLocation : {
+      seatLocation: {
         type: DataTypes.STRING,
         allowNull: false,
       },

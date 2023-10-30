@@ -19,6 +19,8 @@ const postEventHandler = async (req, res) => {
     views,
     priceMin,
     priceMax,
+    isDonation,
+    type,
   } = req.body;
   try {
     const user = await postEventController(
@@ -36,7 +38,9 @@ const postEventHandler = async (req, res) => {
       planImage,
       views,
       priceMin,
-      priceMax
+      priceMax,
+      isDonation,
+      type
     );
     res.status(200).json(user);
   } catch (error) {
