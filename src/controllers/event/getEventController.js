@@ -7,11 +7,12 @@ const getEventController = async (search, category, date, price) => {
   let whereClause = {};
 
   if (search) {
-    const find = Event.findAll({
-      where: { name: { [Op.like]: `%${search}%` } },
+    const find = await Event.findAll({
+      where: { name: { [Op.iLike]: `%${search}%` } },
     });
-    if (find.length > 0) whereClause.name = { [Op.like]: `%${search}%` };
-    else whereClause.locationName = { [Op.like]: `%${search}%` };
+    console.log(find);
+    if (find.length > 0) whereClause.name = { [Op.iLike]: `%${search}%` };
+    else whereClause.locationName = { [Op.iLike]: `%${search}%` };
   }
   if (category) {
     whereClause.category = category;
