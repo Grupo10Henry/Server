@@ -3,9 +3,17 @@ const { Seat } = require("../../db");
 const getSeatController = async (eventID) => {
   const seats = await Seat.findAll({ where: { eventID: eventID } });
 
-  // Extraer solo los precios de los asientos y el sector
-  const pricesAndSectors = seats.map((seat) => [seat.price, seat.sector]);
-  const uniquePricesAndSectors = [...new Set(pricesAndSectors)];
+  // Usar un mapa para almacenar objetos únicos por combinación de precio y sector
+  const uniquePricesAndSectorsMap = new Map();
+
+  // Agregar cada objeto al mapa utilizando la combinación de precio y sector como clave
+  seats.forEach((seat) => {
+    const priceAndSector = [seat.price, seat.sector];
+    uniquePricesAndSectorsMap.set(priceAndSector.toString(), priceAndSector);
+  });
+
+  // Obtener los valores únicos (los objetos) del mapa como un array
+  const uniquePricesAndSectors = Array.from(uniquePricesAndSectorsMap.values());
 
   return uniquePricesAndSectors;
 };
