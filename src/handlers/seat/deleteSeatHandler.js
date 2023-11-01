@@ -3,20 +3,21 @@ const {
   deleteSeatController,
 } = require("../../controllers/seat/deleteSeatController");
 
-const deleteSeatHandler = async (req, res) => {
-  try {
-    const seatId = req.params.id;
+const deleteSeatHandler = (req, res) => {
+  const { id } = req.params;
 
-    const deletedSeat = await deleteSeatController(seatId);
-
-    if (!deletedSeat) {
-      return res.status(404).json({ error: "Asiento no encontrado" });
-    }
-
-    res.status(200).json(deletedSeat);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+  deleteSeatController(id)
+    .then((result) => {
+      if (result) {
+        res.json({ message: "Asiento eliminado exitosamente" });
+      } else {
+        res.status(404).json({ message: "Asiento no encontrado" });
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).json({ message: "Error al eliminar el asiento" });
+    });
 };
 
 module.exports = { deleteSeatHandler };
