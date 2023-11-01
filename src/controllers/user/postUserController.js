@@ -1,8 +1,7 @@
 //Eve
 const { User } = require("../../db");
-
+const { sendEmailRegister } = require("../../Helpers/sendEmailRegister");
 const postUserController = async (
-  isAdmin,
   name,
   lastName,
   email,
@@ -19,7 +18,6 @@ const postUserController = async (
 
   if (filteredDB.length === 0) {
     const newUser = await User.create({
-      isAdmin,
       name,
       lastName,
       email,
@@ -28,6 +26,7 @@ const postUserController = async (
       identityCard,
       dob,
     });
+    sendEmailRegister(newUser.email);
     return newUser;
   } else
     throw new Error(

@@ -3,11 +3,10 @@ const {
   postUserController,
 } = require("../../controllers/user/postUserController");
 const postUserHandler = async (req, res) => {
-  const { isAdmin, name, lastName, email, phone, password, identityCard, dob } =
+  const { name, lastName, email, phone, password, identityCard, dob } =
     req.body;
   try {
     const user = await postUserController(
-      isAdmin,
       name,
       lastName,
       email,
