@@ -1,16 +1,14 @@
-// lu
 const { Seat } = require("../../db");
 
-const deleteSeatController = async (seatId) => {
+const deleteSeatController = async (seatID) => {
   try {
-    const seat = await Seat.findByPk(seatId);
-    if (!seat) {
-      return null; // El asiento no existe, no se puede eliminar
-    }
-    await seat.destroy();
-    return seat;
+    const result = await Seat.destroy({
+      where: { seatID: seatID },
+    });
+
+    return result;
   } catch (error) {
-    throw new Error("Error al eliminar el asiento");
+    throw error;
   }
 };
 

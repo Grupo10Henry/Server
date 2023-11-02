@@ -12,9 +12,9 @@ const { restoreUserHandler } = require("../handlers/user/restoreUserHandler");
 const userRouter = Router();
 
 userRouter.get("/", getUserHandler);
-userRouter.delete("/:id", deleteUserHandler);
 userRouter.delete("/restore/:id", restoreUserHandler);
-userRouter.put("/:id", putUserHandler);
+userRouter.delete("/:id", deleteUserHandler);
 userRouter.put("/isAdmin/:id", putIsAdminUserHandler);
+userRouter.put("/:id", putUserHandler);
 userRouter.post("/", postUserHandler);
 module.exports = userRouter;
