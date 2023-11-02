@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     userID: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: "User",
@@ -41,7 +41,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     reviewDate: {
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       defaultValue: DataTypes.NOW,
       allowNull: false,
     },
