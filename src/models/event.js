@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         allowNull: false,
       },
       time: {
@@ -39,28 +39,28 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       adressLocation: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       mapLocation: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       image: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       bannerImage: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       planImage: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       views: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allownull: false,
       },
       priceMin: {
         type: DataTypes.INTEGER,
@@ -68,7 +68,7 @@ module.exports = (sequelize) => {
       },
       priceMax: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       isDonation: {
         type: DataTypes.BOOLEAN,
@@ -77,7 +77,7 @@ module.exports = (sequelize) => {
       type: {
         type: DataTypes.STRING,
         allowNull: false,
-      }
+      },
     },
     {
       paranoid: true,
