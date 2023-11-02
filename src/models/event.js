@@ -63,12 +63,20 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       priceMin: {
-        type: DataTypes.INTGER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       priceMax: {
         type: DataTypes.INTEGER,
         allowNull: false
+      },
+      isDonation: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      type: {
+        type: DataTypes.STRING,
+        allowNull: false,
       }
     },
     {
