@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     userID: {
-      type: DataTypes.UUID,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: "User",
@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
     },
     issueDate: {
       // 'fechaEmision'
-      type: DataTypes.DATE,
+      type: DataTypes.DATEONLY,
       defaultValue: DataTypes.NOW, // --> se carga la fecha en el momento en que se genera la "boleta de pago"
       allowNull: false,
     },

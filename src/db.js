@@ -1,15 +1,15 @@
 // Evelyn estructura, Lucía relaciones.
 require("dotenv").config();
 const { Sequelize } = require("sequelize");
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOY } = process.env;
+const { DB_DEPLOY } = process.env;
 
 const fs = require("fs");
 const path = require("path");
 
-const sequelize = new Sequelize(
-  `postgres://${DB_DEPLOY}/tubutaca`,
-  { logging: false, native: false }
-);
+const sequelize = new Sequelize(`postgres://${DB_DEPLOY}/tubutaca`, {
+  logging: false,
+  native: false,
+});
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
