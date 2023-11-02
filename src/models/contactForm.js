@@ -8,14 +8,14 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
     },
-    // userID: {   /// Sacar userID
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   references: {
-    //     model: "User",
-    //     key: "userID",
-    //   },
-    // },
+    userID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "User",
+        key: "userID",
+      },
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
