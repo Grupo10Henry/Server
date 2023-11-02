@@ -60,7 +60,7 @@ module.exports = (sequelize) => {
       },
       views: {
         type: DataTypes.INTEGER,
-        allownull: false,
+        allowNull: false,
       },
       priceMin: {
         type: DataTypes.INTEGER,
