@@ -47,6 +47,10 @@ module.exports = (sequelize) => {
         },
         allowNull: false,
       },
+      googleId: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       paranoid: true,
