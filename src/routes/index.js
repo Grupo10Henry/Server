@@ -10,12 +10,21 @@ const seatRouter = require("./seatRouter");
 const reviewRouter = require("./reviewRouter");
 const contactFormRouter = require("./contactFormRouter");
 const companyInfoRouter = require("./companyInfoRouter");
+
 const router = Router();
 
 router.use("/user", userRouter);
 router.use("/login", loginRouter);
 router.use("/event", eventRouter);
 router.use("/seat", seatRouter);
+router.get('/auth/google', passport.authenticate('google', {
+    scope: ['profile', 'email']
+}));
+router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
+    function(req, res) {
+        res.redirect('/');
+    }
+);
 //router.use("/faq", faqRouter);
 //router.use("/paystub", paystubRouter);
 router.use("/review", reviewRouter);

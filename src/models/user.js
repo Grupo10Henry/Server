@@ -47,10 +47,14 @@ module.exports = (sequelize) => {
         },
         allowNull: false,
       },
-      googleId: {
+      googleID: {
         type: DataTypes.STRING,
         allowNull: true,
       },
+      image: {
+        type:DataTypes.TEXT,
+        allowNull:true
+      }
     },
     {
       paranoid: true,
