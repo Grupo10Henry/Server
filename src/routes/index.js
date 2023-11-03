@@ -9,6 +9,7 @@ const seatRouter = require("./seatRouter");
 //const paystubRouter = require("./paystubRouter");
 const reviewRouter = require("./reviewRouter");
 const contactFormRouter = require("./contactFormRouter");
+const passport = require('passport');
 const companyInfoRouter = require("./companyInfoRouter");
 
 const router = Router();
@@ -22,7 +23,7 @@ router.get('/auth/google', passport.authenticate('google', {
 }));
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
-        res.redirect('/');
+        res.redirect('/home');
     }
 );
 //router.use("/faq", faqRouter);

@@ -30,7 +30,7 @@ module.exports = (sequelize) => {
       },
       phone: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       password: {
         type: DataTypes.STRING,
@@ -38,7 +38,7 @@ module.exports = (sequelize) => {
       },
       identityCard: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       dob: {
         type: DataTypes.DATEONLY,
