@@ -29,7 +29,12 @@ router.get('/auth/google/callback', passport.authenticate('google', { failureRed
             { expiresIn: "1h" }
         );
         // Puedes redirigir al frontend con el token como parámetro, o encontrar otra manera de enviarlo.
-        res.redirect(`http://localhost:5173/?token=${token}`);
+        res.cookie('jwt', token, {
+            httpOnly: true,
+            secure: true, // Solo usar en HTTPS
+            sameSite: 'strict' // Evita el envío de la cookie en solicitudes cross-site
+          });
+          res.redirect('http://localhost:5173/');
     }
 );
 //router.use("/faq", faqRouter);
