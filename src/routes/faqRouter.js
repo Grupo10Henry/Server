@@ -7,8 +7,8 @@ const { putFAQByIdHandler } = require("../handlers/FAQ/putFAQhandler");
 
 const faqRouter = Router();
 
-faqRouter.get("/", getFAQHandler); //Obtener todas las faq
 faqRouter.get("/:id", getFAQByIdHandler); //obtener faq por id
+faqRouter.get("/", getFAQHandler); //Obtener todas las faq
 faqRouter.delete("/:id", deleteFAQByIdHandler); //Borrado lógico
 faqRouter.put("/:id", putFAQByIdHandler); //Editar por Id
 faqRouter.post("/", postFAQHandler); // crear faq
