@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-
+const jwt = require('jsonwebtoken');
 const userRouter = require("./userRouter");
 const loginRouter = require("./loginRouter");
 const eventRouter = require("./eventRouter");
@@ -23,7 +23,18 @@ router.get('/auth/google', passport.authenticate('google', {
 }));
 router.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
-        res.redirect('/home');
+        const token = jwt.sign(
+            { id: req.user.id, email: req.user.email }, 
+            process.env.JWT_SECRET, 
+            { expiresIn: "1h" }
+        );
+        // Puedes redirigir al frontend con el token como parámetro, o encontrar otra manera de enviarlo.
+        res.cookie('jwt', token, {
+            httpOnly: true,
+            secure: true, // Solo usar en HTTPS
+            sameSite: 'strict' // Evita el envío de la cookie en solicitudes cross-site
+          });
+          res.redirect('http://localhost:5173/');
     }
 );
 //router.use("/faq", faqRouter);

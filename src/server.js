@@ -11,13 +11,16 @@ const session = require('express-session');
 
 server.use(morgan("dev"));
 server.use(express.json());
-server.use(cors());
-server.use(passport.initialize());
+server.use(cors({
+    origin: 'http://localhost:5173', 
+    credentials: true,
+  }));
 server.use(session({
     secret: process.env.SESSION_SECRET, 
     resave: false,
     saveUninitialized: true
 }));
+server.use(passport.initialize());
 server.use(passport.session());
 server.use(router);
 
