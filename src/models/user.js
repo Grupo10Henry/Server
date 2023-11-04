@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize) => {
   sequelize.define(
@@ -13,7 +13,7 @@ module.exports = (sequelize) => {
       isAdmin: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: false
+        defaultValue: false,
       },
       name: {
         type: DataTypes.STRING,
@@ -66,13 +66,12 @@ module.exports = (sequelize) => {
           }
         },
         beforeUpdate: async (user) => {
-          if (user.changed('password')) {
+          if (user.changed("password")) {
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(user.password, salt);
           }
-        }
-      }
+        },
+      },
     }
-
   );
 };
