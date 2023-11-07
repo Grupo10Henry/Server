@@ -8,6 +8,10 @@ const { deleteEventHandler } = require("../handlers/event/deleteEventHandler");
 const {
   putViewEventHandler,
 } = require("../handlers/event/putViewEventHandler");
+const {
+  restoreEventHandler,
+} = require("../handlers/event/restoreEventHandler");
+
 const eventRouter = Router();
 
 eventRouter.get("/", getEventHandler); //Obtener todos los eventos
@@ -16,4 +20,5 @@ eventRouter.delete("/:id", deleteEventHandler); //Borrado lógico
 eventRouter.put("/:id", putIDEventHandler); //Editar por Id (Admin)
 eventRouter.put("/views/:id", putViewEventHandler); //Editar views (onClick User)
 eventRouter.post("/", postEventHandler); // crear evento
+eventRouter.put("/:id/restore", restoreEventHandler);
 module.exports = eventRouter;
