@@ -1,18 +1,19 @@
-//Eve
 const {
   deleteCompanyInfoController,
 } = require("../../controllers/companyInfo/deleteCompanyInfoController");
 
 const deleteCompanyInfoHandler = async (req, res) => {
-  const infoId = req.params.id;
+  const { id } = req.params;
+
   try {
-    const deletedInfo = await deleteCompanyInfoController(infoId);
-    res.status(200).json(deletedInfo);
+    const deletedInfo = await deleteCompanyInfoController(id);
+    res
+      .status(200)
+      .json({ message: "Información eliminada exitosamente", deletedInfo });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    console.error(error);
+    res.status(500).json({ message: "Error al eliminar la información" });
   }
 };
 
-module.exports = {
-  deleteCompanyInfoHandler,
-};
+module.exports = { deleteCompanyInfoHandler };
