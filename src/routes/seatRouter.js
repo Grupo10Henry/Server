@@ -12,6 +12,9 @@ const {
 const {
   restoreSeatBySectorHandler,
 } = require("../handlers/seat/restoreSeatBySectorHandler");
+const {
+  postSeatEventHandler,
+} = require("../handlers/seat/postSeatEventHandler");
 
 const seatRouter = Router();
 
@@ -21,6 +24,6 @@ seatRouter.delete("/:id", deleteSeatHandler); //Borrado lógico
 seatRouter.delete("/:eventID/:sector", deleteSeatBySectorHandler);
 seatRouter.put("/:id", putSeatHandler); //Editar por Id (ocupado)
 seatRouter.post("/", postSeatHandler); // crear asientos
-seatRouter.put("/:eventID/:sector/restore", restoreSeatBySectorHandler);
+seatRouter.post("/:eventID/:sector", postSeatEventHandler);
 
 module.exports = seatRouter;
