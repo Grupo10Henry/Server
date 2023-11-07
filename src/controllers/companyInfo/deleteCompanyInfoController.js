@@ -1,4 +1,3 @@
-//Eve
 const { CompanyInfo } = require("../../db");
 
 const deleteCompanyInfoController = async (infoId) => {
@@ -7,11 +6,12 @@ const deleteCompanyInfoController = async (infoId) => {
   if (!info) {
     throw new Error("Información no encontrada");
   }
-  CompanyInfo.destroy({
-    where: {
-      companyInfoID: infoId, // ID de la companyInfo que deseas eliminar lógicamente
-    },
-  });
+
+
+  // Eliminar la CompanyInfo lógicamente
+  await info.destroy();
+
+
   return info;
 };
 

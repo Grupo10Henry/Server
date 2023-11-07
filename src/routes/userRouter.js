@@ -19,4 +19,5 @@ userRouter.delete("/:id", deleteUserHandler);
 userRouter.put("/isAdmin/:id", putIsAdminUserHandler);
 userRouter.put("/:id", putUserHandler);
 userRouter.post("/", postUserHandler);
+userRouter.put("/:id/restore", restoreUserHandler);
 module.exports = userRouter;
