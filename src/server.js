@@ -1,23 +1,24 @@
 //Evelyn
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const router = require("./routes");
 const morgan = require("morgan");
 const cors = require("cors");
-const passport = require('passport');
-require('./passport-setup');
+const passport = require("passport");
+require("./passport-setup");
 const server = express();
-const session = require('express-session');
-
+const session = require("express-session");
 server.use(morgan("dev"));
 server.use(express.json());
 server.use(cors());
 server.use(passport.initialize());
-server.use(session({
-    secret: process.env.SESSION_SECRET, 
+server.use(
+  session({
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
-}));
+    saveUninitialized: true,
+  })
+);
 server.use(passport.session());
 server.use(router);
 
