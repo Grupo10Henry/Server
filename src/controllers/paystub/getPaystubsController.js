@@ -1,3 +1,4 @@
+//lu
 const { Paystub } = require("../../db");
 
 const getPaystubsController = async () => {
