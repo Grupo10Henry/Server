@@ -1,16 +1,17 @@
+
+//Eve
 const { User } = require("../../db");
 
-const restoreUserController = async (id) => {
-  const user = await User.findByPk(id, { paranoid: false });
-
-  if (!user) {
-    throw new Error("Usuario no encontrado");
-  }
-
-  // Restaurar el usuario estableciendo deletedAt a null
-  await user.restore();
-
-  return user;
+const restoreUserController = async (userId) => {
+  const restoredUser = await User.restore({
+    where: {
+      userID: userId,
+    },
+  });
+  return await User.findOne({ where: { userID: userId } });
 };
 
-module.exports = { restoreUserController };
+module.exports = {
+  restoreUserController,
+};
+
