@@ -10,6 +10,7 @@ const {
 
 const faqRouter = Router();
 
+
 faqRouter.get("/", getFAQHandler); // Obtener todas las FAQ
 faqRouter.get("/:id", getFAQByIdHandler); // Obtener FAQ por ID
 faqRouter.delete("/:id", deleteFAQByIdHandler); // Borrado lógico
