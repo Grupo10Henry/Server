@@ -1,8 +1,8 @@
-const { Router } = require("express");
-const epaycoRouter = Router();
+// const { Router } = require("express");
+// const epaycoRouter = Router();
 
-const { postEpaycoHandler } = require("../handlers/epayco/postEpaycoHandler");
+// const { postEpaycoHandler } = require("../handlers/epayco/postEpaycoHandler");
 
-epaycoRouter.post("/confirmation", postEpaycoHandler);
+// epaycoRouter.post("/confirmation", postEpaycoHandler);
 
-module.exports = epaycoRouter;
+// module.exports = epaycoRouter;

@@ -7,7 +7,7 @@ const postSeatHandler = async (req, res) => {
   try {
     const { eventID, rows, columns, sector, price } = req.body;
 
-    // Realiza validaciones de los campos necesarios
+    //Realiza validaciones de los campos necesarios
     if (!eventID || !rows || !columns || !sector || !price) {
       return res
         .status(400)

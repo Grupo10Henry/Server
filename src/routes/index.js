@@ -10,8 +10,8 @@ const reviewRouter = require("./reviewRouter");
 const contactFormRouter = require("./contactFormRouter");
 const passport = require("passport");
 const companyInfoRouter = require("./companyInfoRouter");
-const epaycoRouter = require("./epaycoRouter");
 
+const mercadoPagoRouter = require("./mercadoPagoRouter");
 const router = Router();
 
 router.use("/user", userRouter);
@@ -32,10 +32,10 @@ router.get(
   }
 );
 router.use("/faq", faqRouter);
-router.use("/paystub", paystubRouter);
+// router.use("/paystub", paystubRouter);
 router.use("/review", reviewRouter);
 router.use("/contactForm", contactFormRouter);
 router.use("/companyInfo", companyInfoRouter);
-router.use("/epayco", epaycoRouter);
+router.use("/mercadoPago", mercadoPagoRouter);
 
 module.exports = router;
