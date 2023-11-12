@@ -11,7 +11,7 @@ const getAdminSeatHandler = async (req, res) => {
     if (prices.length === 0) {
       return res
         .status(404)
-        .json({ error: "No se encontraron asientos en este" });
+        .json({ error: "No se encontraron asientos en este evento" });
     }
 
     res.status(200).json(prices);

@@ -1,4 +1,4 @@
-const { Paystub } = require("../../db");
+const { Paystub, userEvent } = require("../../db");
 
 const postPaystubController = async (
   userID,
@@ -16,7 +16,7 @@ const postPaystubController = async (
     paymentNum,
     isDonation,
   });
-
+  userEvent.create({ userID, eventID });
   return newPaystub;
 };
 
