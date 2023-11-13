@@ -30,6 +30,8 @@ const placeOrder = async (req, res) => {
         pending: "http://localhost:5173/#/mercadopagopendiente",
         success: "http://localhost:5173/#/mercadopagoexitoso",
       },
+      notification_url:
+        "https://bef5-186-129-13-128.ngrok.io/mercadoPago/webhook",
     };
 
     const response = await mercadopago.preferences.create(preference);
@@ -52,10 +54,17 @@ const succesfulPurchase = (req, res) => {
 const webhook = async (req, res) => {
   try {
     const data = req.query;
+    console.log(" data ", data);
+
     if (data.type === "payment") {
-      const payment = await mercadopago.payment.findById(payment["data.id"]);
-      console.log(payment);
+      const paymentId = data["data.id"];
+
+      const payment = await mercadopago.payment.findById(paymentId);
+      console.log("Hola Juli = ", payment);
       res.status(204).json(payment);
+    } else {
+      console.log("type ", data.type);
+      res.status(204).json("Aca estoy");
     }
   } catch (error) {
     res.status(400).json({ error: error.message });
