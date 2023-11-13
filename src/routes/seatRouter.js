@@ -1,6 +1,9 @@
 const { Router } = require("express");
 const { postSeatHandler } = require("../handlers/seat/postSeatHandler");
 const { getSeatHandler } = require("../handlers/seat/getSeatHandler");
+const {
+  getSeatUserIdHandler,
+} = require("../handlers/seat/getSeatUserIdHandler");
 const { getAdminSeatHandler } = require("../handlers/seat/getAdminSeatHandler");
 const {
   getSeatByEventHandler,
@@ -20,6 +23,7 @@ const {
 const seatRouter = Router();
 
 seatRouter.get("/:id", getSeatHandler); //Obtener todos los asientos
+seatRouter.get("/user/:id", getSeatUserIdHandler);
 seatRouter.get("/admin/:id", getAdminSeatHandler);
 seatRouter.get("/:eventID/:sector", getSeatByEventHandler); // obtener asientos por eventID y sector
 seatRouter.delete("/:id", deleteSeatHandler); //Borrado lógico
