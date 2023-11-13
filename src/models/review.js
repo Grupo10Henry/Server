@@ -24,14 +24,6 @@ module.exports = (sequelize) => {
         key: "eventID",
       },
     },
-    paystubID: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      references: {
-        model: "Paystub",
-        key: "paystubID",
-      },
-    },
     review: {
       type: DataTypes.TEXT,
       allowNull: true,
