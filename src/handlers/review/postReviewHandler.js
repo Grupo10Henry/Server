@@ -3,13 +3,12 @@ const {
 } = require("../../controllers/review/postReviewController");
 
 const postReviewHandler = async (req, res) => {
-  const { userID, eventID, paystubID, review, rating, reviewDate } = req.body;
+  const { userID, eventID, review, rating, reviewDate } = req.body;
 
   try {
     const newReview = await postReviewController(
       userID,
       eventID,
-      paystubID,
       review,
       rating,
       reviewDate
