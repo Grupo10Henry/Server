@@ -30,7 +30,7 @@ seatRouter.get("/user/:id", getSeatUserIdHandler);
 seatRouter.get("/admin/:id", getAdminSeatHandler);
 seatRouter.get("/:eventID/:sector", getSeatByEventHandler); // obtener asientos por eventID y sector
 seatRouter.get('/seats/:userID/:eventID', getSeatsByUserAndEventHandler);
-seatRouter.get("/:id", getSeatByIdHandler)
+seatRouter.get("/by-id/:id", getSeatByIdHandler)
 seatRouter.delete("/:id", deleteSeatHandler); //Borrado lógico
 seatRouter.delete("/:eventID/:sector", deleteSeatBySectorHandler);
 seatRouter.put("/:id", putSeatHandler); //Editar por Id (ocupado)
