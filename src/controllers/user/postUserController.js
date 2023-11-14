@@ -8,7 +8,8 @@ const postUserController = async (
   phone,
   password,
   identityCard,
-  dob
+  dob,
+  image
 ) => {
   const filteredDB = await User.findAll({
     where: {
@@ -25,6 +26,7 @@ const postUserController = async (
       password,
       identityCard,
       dob,
+      image,
     });
     sendEmailRegister(newUser.email);
     return newUser;
