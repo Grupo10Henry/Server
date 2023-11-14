@@ -1,19 +1,18 @@
-const { Review } = require("../../db");
+const { Review2 } = require("../../db");
 
 const postReviewController = async (
-    userID, 
-    eventID, 
-    paystubID, 
-    review, 
-    rating, 
-    reviewDate) => {
-  const newReview = await Review.create({
+  userID,
+  eventID,
+  review,
+  rating,
+  reviewDate
+) => {
+  const newReview = await Review2.create({
     userID,
     eventID,
-    paystubID,
     review,
     rating,
-    reviewDate
+    reviewDate,
   });
   return newReview;
 };
