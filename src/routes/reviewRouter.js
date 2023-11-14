@@ -11,7 +11,7 @@ const {
 const reviewRouter = Router();
 
 reviewRouter.get("/", getReviewHandler); //Obtener todos los comentarios
-reviewRouter.get("/user", getUserEventReviewHandler);
+reviewRouter.get("/:userID/:eventID", getUserEventReviewHandler);
 reviewRouter.delete("/:id", deleteReviewHandler);
 reviewRouter.post("/", postReviewHandler); // crear comentario
 module.exports = reviewRouter;
