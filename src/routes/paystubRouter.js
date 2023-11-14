@@ -12,7 +12,7 @@ const {
   getPaystubByDateHandler,
 } = require("../handlers/paystub/getPaystubByDateHandler");
 
-  getPaystubsIdHandler,
+ const { getPaystubsIdHandler,
 } = require("../handlers/paystub/getPaystubIdHandler");
 
 const paystubRouter = Router();
