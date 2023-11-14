@@ -4,7 +4,7 @@ const {
 
 const getUserEventReviewHandler = async (req, res) => {
   try {
-    const { userID, eventID } = req.body;
+    const { userID, eventID } = req.params;
     const reviews = await getUserEventReviewController(userID, eventID);
     if (reviews.length > 0) {
       res.status(200).json(reviews);
