@@ -3,7 +3,6 @@ const { Paystub, userEvent } = require("../../db");
 const postPaystubController = async (
   userID,
   eventID,
-  issueDate,
   tickets,
   paymentNum,
   isDonation
@@ -11,7 +10,6 @@ const postPaystubController = async (
   const newPaystub = await Paystub.create({
     userID,
     eventID,
-    issueDate,
     tickets,
     paymentNum,
     isDonation,
