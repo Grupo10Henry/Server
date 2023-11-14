@@ -9,6 +9,10 @@ const {
 } = require("../handlers/user/putIsAdminUserHandler");
 const { deleteUserHandler } = require("../handlers/user/deleteUserHandler");
 const { restoreUserHandler } = require("../handlers/user/restoreUserHandler");
+const {
+  getUserByDateHandler,
+} = require("../handlers/user/getUserByDateHandler");
+
 
 const userRouter = Router();
 
@@ -20,4 +24,5 @@ userRouter.put("/isAdmin/:id", putIsAdminUserHandler);
 userRouter.put("/:id", putUserHandler);
 userRouter.post("/", postUserHandler);
 userRouter.put("/:id/restore", restoreUserHandler);
+userRouter.get("/:year/:month", getUserByDateHandler);
 module.exports = userRouter;
