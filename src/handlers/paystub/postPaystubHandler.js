@@ -3,14 +3,12 @@ const {
 } = require("../../controllers/paystub/postPaystubController");
 
 const postPaystubHandler = async (req, res) => {
-  const { userID, eventID, issueDate, tickets, paymentNum, isDonation } =
-    req.body;
+  const { userID, eventID, tickets, paymentNum, isDonation } = req.body;
 
   try {
     const newPaystub = await postPaystubController(
       userID,
       eventID,
-      issueDate,
       tickets,
       paymentNum,
       isDonation

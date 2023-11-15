@@ -51,7 +51,9 @@ const googleLoginController = async (accessToken) => {
       identityCard: "",
     });
   }
+
   sendEmailRegister(userInfo.email);
+
   const jwtPayload = {
     userID: user.userID,
     email: user.email,
