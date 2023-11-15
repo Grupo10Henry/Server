@@ -11,7 +11,7 @@ const getEmailContactForm = async (
     from: email, // dirección del remitente
     to: '"Mi butaca" <henrypfgrupo10@gmail.com>', // lista de destinatarios
     subject: `${name} ${lastName}`, // línea de asunto
-    html: `El usuario ${name} ${lastName} ha enviado el siguiente mensaje:\n ${consultation}. \n Número de teléfono: ${phone}. \n `,
+    html: `El usuario ${name} ${lastName} ha enviado el siguiente mensaje: <br> ${consultation}. <br> Número de teléfono: ${phone}. \n `,
   });
 };
 

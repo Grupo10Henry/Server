@@ -1,4 +1,4 @@
-const { Review } = require("../../db");
+const { Review2 } = require("../../db");
 
 const postReviewController = async (
   userID,
@@ -7,7 +7,7 @@ const postReviewController = async (
   rating,
   reviewDate
 ) => {
-  const newReview = await Review.create({
+  const newReview = await Review2.create({
     userID,
     eventID,
     review,

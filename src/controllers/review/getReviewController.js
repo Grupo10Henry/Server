@@ -1,10 +1,10 @@
-const {Review} = require("../../db")
+const { Review2 } = require("../../db");
 
 const getReviewController = async () => {
-    const reviews = await Review.findAll();
-    return reviews
+  const reviews = await Review2.findAll();
+  return reviews;
 };
 
 module.exports = {
-    getReviewController
-}
+  getReviewController,
+};
