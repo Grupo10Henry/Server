@@ -11,14 +11,14 @@ const placeOrder = async (req, res) => {
   try {
     //generar orden de compra a mercado pago con la info que llega por body
     // const {id, title, description, image, stock, condition, price} = req.body;
-    const { name, price, description } = req.body;
+    const { userID, eventName, total, description } = req.body;
     let preference = {
       items: [
         {
-          userId: 41,
-          title: name,
+          userId: userID,
+          title: eventName,
           quantity: 1,
-          unit_price: 1,
+          unit_price: total,
           currency_id: "ARS",
           // picture_url: data.image,
           description: description,
