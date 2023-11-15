@@ -6,6 +6,7 @@ const axios = require("axios");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
+const { sendEmailRegister } = require("../../Helpers/sendEmailRegister");
 
 const googleLoginController = async (accessToken) => {
   console.log("Access token recibido para verificación:", accessToken);
@@ -50,6 +51,7 @@ const googleLoginController = async (accessToken) => {
       identityCard: "",
     });
   }
+  sendEmailRegister(user.email);
 
   const jwtPayload = {
     userID: user.userID,
