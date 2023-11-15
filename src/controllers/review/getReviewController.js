@@ -1,3 +1,4 @@
+
 const { Review2, User, Event } = require("../../db");
 
 const getReviewController = async () => {
@@ -20,6 +21,7 @@ const getReviewController = async () => {
     })
   );
   return data;
+
 };
 
 module.exports = {
