@@ -32,21 +32,22 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { User, ContactForm, Review, Seat, Event, Paystub } = sequelize.models;
+
+const { User, ContactForm, Review, Seat, Event, Paystub, carrito, review2 } =
+
+  sequelize.models;
 //relacion de Users
 User.hasMany(ContactForm, { foreignKey: "userID", as: "user_contactForms" }); //  Usuario tiene muchos FormContacto
 User.hasMany(Review, { foreignKey: "userID", as: "user_review" }); //  Usuario tiene muchas reviews
 User.hasMany(Seat, { foreignKey: "userID", as: "user_seat" }); // Usuario tiene muchas Butaca
-User.hasMany(Paystub, { foreignKey: "userID", as: "user_paystub" }); // Usuario tiene muchas Boleta
+User.hasMany(Paystub, { foreignKey: "userID", as: "user_paystub" });
 // Relacion de Events
 Event.hasMany(Review, { foreignKey: "eventID", as: "event_review" }); //  Evento tiene muchas reviews
 Event.hasMany(Seat, { foreignKey: "eventID", as: "event_seat" }); // Evento tiene muchas Butaca
 Event.hasMany(Paystub, { foreignKey: "eventID", as: "event_paystub" });
 //Relación Paystub
 Paystub.hasMany(Seat, { foreignKey: "paystubID", as: "paystub_seat" }); // Boleta tiene muchas Butaca
-//Relación one to one review y paystub
-Paystub.hasOne(Review);
-Review.belongsTo(Paystub);
+
 //Relacion de N-N User-Event
 User.belongsToMany(Event, { through: "userEvent" }); //  Usuario pertenece a muchos Evento
 Event.belongsToMany(User, { through: "userEvent" });
