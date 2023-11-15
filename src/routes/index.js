@@ -9,8 +9,8 @@ const reviewRouter = require("./reviewRouter");
 const contactFormRouter = require("./contactFormRouter");
 const companyInfoRouter = require("./companyInfoRouter");
 const paystubRouter = require("./paystubRouter");
-
 const mercadoPagoRouter = require("./mercadoPagoRouter");
+
 const router = Router();
 
 router.use("/user", userRouter);
@@ -23,5 +23,6 @@ router.use("/paystub", paystubRouter);
 router.use("/contactForm", contactFormRouter);
 router.use("/companyInfo", companyInfoRouter);
 router.use("/mercadoPago", mercadoPagoRouter);
+
 
 module.exports = router;
