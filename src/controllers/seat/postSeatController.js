@@ -7,7 +7,7 @@ async function postSeatController(eventID, rows, columns, sector, price) {
     where: { eventID: eventID, sector: sector },
   });
   if (findSeat.length === 0) {
-    for (let row = 1; row <= rows; row++) {
+   for (let row = 1; row <= rows; row++) {
       for (let col = 0; col < columns; col++) {
         const seatLocation = `${row} - ${String.fromCharCode(65 + col)}`
         seatMatrix.push({

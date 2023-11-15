@@ -11,15 +11,15 @@ const placeOrder = async (req, res) => {
   try {
     //generar orden de compra a mercado pago con la info que llega por body
     // const {id, title, description, image, stock, condition, price} = req.body;
-    const { name, price, description } = req.body;
+    const { userID, eventName, total, description } = req.body;
     let preference = {
       items: [
         {
-          userId: 41,
-          title: name,
+          userId: userID,
+          title: eventName,
           quantity: 1,
-          unit_price: price,
-          currency_id: "ARG",
+          unit_price: total,
+          currency_id: "ARS",
           // picture_url: data.image,
           description: description,
         },
@@ -31,11 +31,14 @@ const placeOrder = async (req, res) => {
         success: "http://localhost:5173/#/mercadopagoexitoso",
       },
       notification_url:
-        "https://bef5-186-129-13-128.ngrok.io/mercadoPago/webhook",
+        "https://grupo10henryserver.onrender.com/mercadoPago/webhook",
     };
 
     const response = await mercadopago.preferences.create(preference);
-    res.status(200).send(response);
+    res.status(200).json({
+      init_point: response.body.init_point,
+      payment_id: response.body.id,
+    });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
@@ -43,10 +46,10 @@ const placeOrder = async (req, res) => {
 
 const succesfulPurchase = (req, res) => {
   try {
-    //revisar que hace cuando tenga credenciales
     const { payment_id } = req.query;
-
-    res.status(200).send("Compra realizada con exito", payment_id);
+    res
+      .status(200)
+      .json({ message: "Compra realizada con éxito", paymentId: payment_id });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
