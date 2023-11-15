@@ -31,7 +31,7 @@ const placeOrder = async (req, res) => {
         success: "http://localhost:5173/#/mercadopagoexitoso",
       },
       notification_url:
-        "https://18c2-190-172-72-88.ngrok.io/mercadoPago/webhook",
+        "https://grupo10henryserver.onrender.com/mercadoPago/webhook",
     };
 
     const response = await mercadopago.preferences.create(preference);
