@@ -40,6 +40,6 @@ seatRouter.delete("/:eventID/:sector", deleteSeatBySectorHandler);
 seatRouter.put("/:id", putSeatHandler); //Editar por Id (ocupado)
 seatRouter.post("/", postSeatHandler); // crear asientos
 seatRouter.post("/:eventID/:sector", postSeatEventHandler);
-//seatRouter.get("/reporter", getSeatReportHandler);
+
 
 module.exports = seatRouter;
