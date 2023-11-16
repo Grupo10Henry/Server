@@ -21,11 +21,6 @@ const {
 } = require("../handlers/seat/postSeatEventHandler");
 const { getSeatsByUserAndEventHandler } = require('../handlers/seat/getSeatsByUserAndEventHandler');
 
-const {
-  getSeatReportHandler,
-} = require("../handlers/seat/getSeatReportHandler");
-
-
 const { getSeatByIdHandler } = require("../handlers/seat/getSeatByIdHandler");
 const { getSeatDetailsHandler } = require("../handlers/seat/getSeatDetailsHandler");
 const {getSeatReportHandler } = require("../handlers/seat/getSeatReportHandler")
