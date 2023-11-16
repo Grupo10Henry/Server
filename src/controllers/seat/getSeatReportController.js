@@ -9,10 +9,10 @@ const getSeatReportController = async () => {
             attributes: ['seatID', 'seatLocation', 'eventID'],
         });
 
-        
+     
         const eventIds = [...new Set(seatsWithPaystub.map(seat => seat.eventID))];
 
-        // Obtener eventos basados en los eventIDs
+        
         const events = await Event.findAll({
             where: { eventID: eventIds },
             attributes: ['eventID', 'name'],

@@ -10,3 +10,4 @@ const getSeatReportHandler = async (req, res) => {
 };
 
 module.exports = { getSeatReportHandler };
+
