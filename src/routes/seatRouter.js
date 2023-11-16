@@ -19,6 +19,9 @@ const {
 const {
   postSeatEventHandler,
 } = require("../handlers/seat/postSeatEventHandler");
+
+const { getSeatsByUserAndEventHandler } = require('../handlers/seat/getSeatsByUserAndEventHandler');
+
 const {
   getSeatsByUserAndEventHandler,
 } = require("../handlers/seat/getSeatsByUserAndEventHandler");
@@ -26,12 +29,14 @@ const {
   getSeatReportHandler,
 } = require("../handlers/seat/getSeatReportHandler");
 
-const { getSeatByIdHandler } = require("../handlers/seat/getSeatByIdHandler");
 
+const { getSeatByIdHandler } = require("../handlers/seat/getSeatByIdHandler");
 const { getSeatDetailsHandler } = require("../handlers/seat/getSeatDetailsHandler");
+const {getSeatReportHandler } = require("../handlers/seat/getSeatReportHandler")
 
 const seatRouter = Router();
 
+seatRouter.get("/report", getSeatReportHandler);
 seatRouter.get("/by-id/:id", getSeatByIdHandler)
 seatRouter.get('/details/:id', getSeatDetailsHandler)
 seatRouter.get("/:id", getSeatHandler); //Obtener todos los asientos

@@ -1,26 +1,38 @@
-const { Seat } = require("../../db");
+const { Seat, Event } = require("../../db");
+const { Op } = require("sequelize");
 
 const getSeatReportController = async () => {
-  const seats = await Seat.findAll();
+    try {
+       
+        const seatsWithPaystub = await Seat.findAll({
+            where: { paystubID: { [Op.ne]: null } },
+            attributes: ['seatID', 'seatLocation', 'eventID'],
+        });
 
-  const uniqueSeatsMap = new Map();
+     
+        const eventIds = [...new Set(seatsWithPaystub.map(seat => seat.eventID))];
 
-  seats.forEach((seat) => {
-    const seatID = seat.seatID;
+        
+        const events = await Event.findAll({
+            where: { eventID: eventIds },
+            attributes: ['eventID', 'name'],
+        });
 
-    if (!uniqueSeatsMap.has(seatID)) {
-      uniqueSeatsMap.set(seatID, {
-        seatID: seat.seatID,
-        seatLocation: seat.seatLocation,
-        eventID: seat.eventID,
-        paystubID: seat.paystubID,
-      });
+      
+        const eventMap = events.reduce((acc, event) => {
+            acc[event.eventID] = event.name;
+            return acc;
+        }, {});
+
+        
+        const report = seatsWithPaystub.map(seat => ({
+            ...seat.dataValues,
+            eventName: eventMap[seat.eventID]
+        }));
+
+        return report;
+    } catch (error) {
+        return { error: error.message };
     }
-  });
-
-  const uniqueSeatsInfo = Array.from(uniqueSeatsMap.values());
-
-  return uniqueSeatsInfo;
 };
-
 module.exports = { getSeatReportController };
