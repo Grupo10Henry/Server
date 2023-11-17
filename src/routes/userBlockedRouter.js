@@ -8,6 +8,7 @@ const {
 const {
   deleteUserBlockedHandler,
 } = require("../handlers/userBlocked/deleteUserBlockedHandler");
+
 const userBlockedRouter = Router();
 
 userBlockedRouter.get("/", getUserBlockedHandler);

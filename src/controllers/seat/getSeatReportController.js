@@ -29,8 +29,21 @@ const getSeatReportController = async () => {
             ...seat.dataValues,
             eventName: eventMap[seat.eventID]
         }));
+         const eventNameCounts = report?.reduce((counts, item) => {
+            counts[item.eventName] = (counts[item.eventName] || 0) + 1;
+            return counts;
+          }, {});
+          
+          const sortedCounts = Object.entries(eventNameCounts)
+            .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+            .map(([eventName]) => eventName);
+          
+          const countArray = Object.values(eventNameCounts).sort((a, b) => b - a);
+          
+          const dataReport = {nombres: sortedCounts, entradas: countArray}
 
-        return report;
+        return dataReport;
+
     } catch (error) {
         return { error: error.message };
     }
