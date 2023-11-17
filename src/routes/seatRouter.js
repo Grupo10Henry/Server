@@ -19,17 +19,26 @@ const {
 const {
   postSeatEventHandler,
 } = require("../handlers/seat/postSeatEventHandler");
-const { getSeatsByUserAndEventHandler } = require('../handlers/seat/getSeatsByUserAndEventHandler');
+const {
+  getSeatsByUserAndEventHandler,
+} = require("../handlers/seat/getSeatsByUserAndEventHandler");
 
 const { getSeatByIdHandler } = require("../handlers/seat/getSeatByIdHandler");
-const { getSeatDetailsHandler } = require("../handlers/seat/getSeatDetailsHandler");
-const {getSeatReportHandler } = require("../handlers/seat/getSeatReportHandler")
-
+const {
+  getSeatDetailsHandler,
+} = require("../handlers/seat/getSeatDetailsHandler");
+const {
+  getSeatReportHandler,
+} = require("../handlers/seat/getSeatReportHandler");
+const {
+  getSeat2ReportHandler,
+} = require("../handlers/seat/getSeat2ReportHandler");
 const seatRouter = Router();
 
-seatRouter.get("/report", getSeatReportHandler);
-seatRouter.get("/by-id/:id", getSeatByIdHandler)
-seatRouter.get('/details/:id', getSeatDetailsHandler)
+seatRouter.get("/reportNames", getSeatReportHandler);
+seatRouter.get("/reportSeats", getSeat2ReportHandler);
+seatRouter.get("/by-id/:id", getSeatByIdHandler);
+seatRouter.get("/details/:id", getSeatDetailsHandler);
 seatRouter.get("/:id", getSeatHandler); //Obtener todos los asientos
 seatRouter.get("/user/:id", getSeatUserIdHandler);
 seatRouter.get("/admin/:id", getAdminSeatHandler);
@@ -40,6 +49,5 @@ seatRouter.delete("/:eventID/:sector", deleteSeatBySectorHandler);
 seatRouter.put("/:id", putSeatHandler); //Editar por Id (ocupado)
 seatRouter.post("/", postSeatHandler); // crear asientos
 seatRouter.post("/:eventID/:sector", postSeatEventHandler);
-
 
 module.exports = seatRouter;
