@@ -1,5 +1,8 @@
 const { User } = require("../../db");
 const { Op } = require("sequelize");
+const {
+  getUserBlockedController,
+} = require("../userBlocked/getUserBlockedController");
 
 const getUserController = async (name) => {
   // Utiliza la opción paranoid: false para incluir registros eliminados lógicamente
@@ -22,7 +25,19 @@ const getUserController = async (name) => {
       ],
     });
 
-    return [...userDataBase];
+    const users = await Promise.all(
+      userDataBase.map(async (user) => {
+        const isBlocked = await getUserBlockedController(user.dataValues.email);
+        let newUser = {
+          ...user.dataValues,
+          isBlocked,
+        };
+
+        return newUser;
+      })
+    );
+
+    return users;
   }
 };
 
