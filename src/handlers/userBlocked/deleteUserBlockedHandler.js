@@ -1,6 +1,6 @@
 const {
   deleteUserBlockedController,
-} = require("../../controllers/carrito/postUserBlockedController");
+} = require("../../controllers/userBlocked/deleteUserBlockedController");
 
 const deleteUserBlockedHandler = async (req, res, next) => {
   const { id } = req.params;
