@@ -1,13 +1,12 @@
 const { Seat, Event } = require("../../db");
 const { Op } = require("sequelize");
 
-const getSeatReportController = async () => {
+const getSeat2ReportController = async () => {
   try {
     const seatsWithPaystub = await Seat.findAll({
       where: { paystubID: { [Op.ne]: null } },
       attributes: ["seatID", "seatLocation", "eventID"],
     });
-
     const eventIds = [...new Set(seatsWithPaystub.map((seat) => seat.eventID))];
 
     const events = await Event.findAll({
@@ -29,14 +28,11 @@ const getSeatReportController = async () => {
       return counts;
     }, {});
 
-    const sortedCounts = Object.entries(eventNameCounts)
-      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-      .map(([eventName]) => eventName);
+    const countArray = Object.values(eventNameCounts).sort((a, b) => b - a);
 
-    return sortedCounts;
+    return countArray;
   } catch (error) {
     return { error: error.message };
   }
-
 };
-module.exports = { getSeatReportController };
+module.exports = { getSeat2ReportController };
