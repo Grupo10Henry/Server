@@ -26,9 +26,9 @@ const placeOrder = async (req, res) => {
       ],
 
       back_urls: {
-        failure: "http://localhost:5173/#/mercadopagoerror",
-        pending: "http://localhost:5173/#/mercadopagopendiente",
-        success: "http://localhost:5173/#/mercadopagoexitoso",
+        failure: "https://mibutaca.vercel.app/#/mercadopagoerror",
+        pending: "https://mibutaca.vercel.app/#/mercadopagopendiente",
+        success: "https://mibutaca.vercel.app/#/mercadopagoexitoso",
       },
       notification_url:
         "https://grupo10henryserver.onrender.com/mercadoPago/webhook",

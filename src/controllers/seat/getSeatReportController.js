@@ -37,5 +37,6 @@ const getSeatReportController = async () => {
   } catch (error) {
     return { error: error.message };
   }
+
 };
 module.exports = { getSeatReportController };
