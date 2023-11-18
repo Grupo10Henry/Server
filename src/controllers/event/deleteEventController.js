@@ -8,7 +8,7 @@ const deleteEventController = async (eventId) => {
     throw new Error("Evento no encontrado");
   }
 
-  if (pays) {
+  if (pays.length) {
     throw new Error(
       "Este evento ya tiene pagos realizados por usuarios, por favor edite el evento para cancerlo"
     );
